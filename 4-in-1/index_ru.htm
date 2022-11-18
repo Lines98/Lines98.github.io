@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Линии 98 - 4 игры в 1</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/lines.js"></script>
+    <script type="text/javascript">
+        // Set default game settings:
+        /*
+         * balls_type     : type of the game balls (one of the 'matte' and 'glossy')
+         * show_next      : next balls showing enabled or not (boolean)
+         * mode           : game mode (number from 0 to 8)
+         * field_size     : game field size (in cells)
+         * field_border   : the inner boundary of the field (in cells) - we can't put a ball on it
+         */
+        var settings =
+            {
+                 "balls_type" : "matte",
+                       "lang" : "ru",
+                  "show_next" : false,
+                       "mode" : 3,
+                 "field_size" : 9,
+               "field_border" : 0
+            };
+    </script>
+</head>
+<body>
+    <div id="background">
+        <svg id="back-gradient" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <radialGradient id="gradient-dark" cx="50%" cy="50%" r="70.71%">
+                <stop id="dark-center" stop-color="hsl(50, 8%, 80%)" offset="0%"   />
+                <stop id="dark-edge"   stop-color="hsl(50, 20%, 23%)" offset="100%" />
+            </radialGradient>
+            <rect id="background-rect" width="100" height="100" x="0" y="0" fill="url(#gradient-dark)" />
+        </svg>
+        <svg id="back-decor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 100 100">
+            <radialGradient id="gradient-bright" cx="50%" cy="50%" r="50%">
+                <stop id="bright-center" stop-color="hsl(50, 90%, 93%)" stop-opacity="0.1" offset="45%"   />
+                <stop id="bright-edge"   stop-color="hsl(50, 100%, 76%)" stop-opacity="0.38" offset="100%" />
+            </radialGradient>
+            <mask id="decor-mask">
+                <image width="100" height="100" x="0" y="0" xlink:href="images/bg2.png" />
+            </mask>
+            <rect id="decor-rect" width="100" height="100" x="0" y="0" transform="rotate(0 50 50)" mask="url(#decor-mask)" fill="url(#gradient-bright)" />
+        </svg>
+    </div>
+
+    <div id="container">
+        <header>
+            <div id="balls-preview" title="Следующие шарики">
+            </div>
+            <span id="score" title="Набранные очки">0</span>
+        </header>
+
+        <!-- Game field -->
+        <div id="field">
+            <div id="field-insert">
+            </div>
+        </div>
+
+        <!-- Options -->
+        <div id="options-page">
+            <h1>Настройки</h1>
+            <form>
+                <fieldset>
+                    <legend>Language/Язык:</legend>
+                    <select name="language">
+                        <option value="ru" selected="selected">Русский</option>
+                        <option value="en">English</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <legend>Режим по умолчанию:</legend>
+                    <input id="lines" type="radio" name="mode" checked="checked" />
+                        <label for="lines">линии</label> (минимум
+                            <select name="line-num">
+                                <option value="4">4</option>
+                                <option value="5" selected="selected">5</option>
+                                <option value="6">6</option>
+                            </select> в ряд)<br />
+                    <input id="rectangles" type="radio" name="mode" /> <label for="rectangles">прямоугольники</label><br />
+                    <input id="rings" type="radio" name="mode" /> <label for="rings">ромбы</label><br />
+                    <input id="blocks" type="radio" name="mode" />
+                        <label for="blocks">блоки</label> (минимум по
+                            <select name="block-num">
+                                <option value="6">6</option>
+                                <option value="7" selected="selected">7</option>
+                                <option value="8">8</option>
+                            </select>)
+                </fieldset>
+                <fieldset>
+                    <legend>Вид шариков:</legend>
+                    <select name="balls-skin">
+                        <option value="matte" selected="selected">матовые</option>
+                        <option value="glossy">глянцевые</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <legend>Следующие шарики:</legend>
+                    <input id="next" type="checkbox" /> <label for="next">показывать положение следующих шариков</label><br />
+                </fieldset>
+                <input type="button" id="ok" value="сохранить" />
+                <input type="button" id="cancel" value="отмена" />
+            </form>
+        </div>
+
+        <!-- Help -->
+        <div id="help-page">
+            <h1>Помощь</h1>
+            <p>Игра проходит на поле размером 9×9 или 7×7 клеток, в зависимости от режима. За каждый ход на случайных клетках поля добавляются три шарика из семи возможных цветов. <em>Цель игры</em> — продержаться как можно дольше, убирая фигуры шаров одинакового цвета. Конкретный вид фигуры определяется режимом игры. Для того, чтобы собрать фигуру, игрок каждый ход может перемещать один шарик, если между начальной и конечной клеткой можно проложить путь, не занятый другими шариками.</p>
+
+            <p>За каждую собранную фигуру игроку начисляются очки по формуле (<i>n-n</i><sub>min</sub>+1)‧<i>n</i>, где <i>n</i> — количество шариков в убранной фигуре, <i>n</i><sub>min</sub> — минимальное количество шариков в фигуре при данном режиме игры. После перемещения шарика, завершающего фигуру, новые три шарика не добавляются до следующего хода.</p>
+
+            <h2>Режимы игры:</h2>
+            <dl>
+                <dt id="dt-lines">Линии</dt>
+                    <dd>Классический режим, в котором фигурой является вертикальная, горизонтальная или диагональная прямая. Минимальное количество шариков в фигуре по умолчанию — 5, но в настройках можно выбрать 4 или 6. Размер поля 9×9.</dd>
+                <dt id="dt-rectangles">Прямоугольники</dt>
+                    <dd>Минимальной фигурой является квадрат 2×2. За один ход можно убрать 4 или 6 шариков. Поле 7×7.</dd>
+                <dt id="dt-rings">Ромбы</dt>
+                    <dd>В фигуре минимум 4 шарика, расположенных в вершинах квадрата, повернутого на 45 градусов. Максимально возможное количество шариков в фигуре — 9. Размер поля 7×7.</dd>
+                <dt id="dt-blocks">Блоки</dt>
+                    <dd>Блок представляет собой фигуру произвольной формы, составленную из шариков, клетки которых имеют общую грань. Минимальное количество шариков в блоке определяется в настройках (по умолчанию — 7). Поле 9×9.</dd>
+            </dl>
+        </div>
+
+        <!-- High scores -->
+        <div id="scores-page">
+            <h1>Линии, 5 в ряд</h1>
+
+            <div id="scores-table"></div>
+        </div>
+
+        <footer>
+            <a id="options"><span class="tooltip">Настройки</span></a>
+            <a id="help"><span class="tooltip">Помощь</span></a>
+            <a id="scores"><span class="tooltip">Таблица рекордов</span></a>
+            <a id="mode"><span id="num-balls">5</span><span class="tooltip">Сменить режим</span></a>
+            <a id="restart"><span class="tooltip">Новая игра</span></a>
+        </footer>
+    </div>
+</body>
+</html>
