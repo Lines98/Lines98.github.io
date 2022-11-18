@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0">
+	<title>Lines 98 - Hexagon</title>
+	<link rel="stylesheet" type="text/css" href='fonts/stylesheet.css'>
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" type="text/css" />
+	<link rel="stylesheet" type="text/css" href='css/styles.min.css'>
+	<script src="build/lib.js"></script>
+	<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+<div id="greeter" style="font-size: 3vw; color: #FFF; position: fixed; top: 50%; left: 50%; margin-left: -10vw;">
+	Загрузка, подождите ...
+</div>
+<div id="wrapper" style="display:none;">
+<div data-role="page" id="game_loader">
+    <div role="main" class="ui-content">
+	</div>
+</div>
+<div data-role="page" id="game_menu">
+    <div role="main" class="ui-content">
+		<div id="game-selection-wrapper">
+			<div id="game_hex" style="game-choice">.</div>
+			<div id="game_square" style="game-choice">.</div>
+			<div id="game_theme_setup" style="game-choice">.</div>
+		</div>
+    </div>
+</div>
+<div data-role="page" id="game_settings">
+    <div role="main" class="ui-content">
+		<div id="settings_outer">
+		<div id="settings_middle">
+		<div id="settings_inner">
+			<div id="settings_container"></div>
+			<div id="btn-back-theme" style="margin-top: 3vmin;">.</div>
+		</div>
+		</div>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="event">
+    <div role="main" class="ui-content">
+    </div>
+
+	<div data-role="popup" id="gameover" class="ui-corner-all" data-transition="slidedown" data-dismissible="false">
+		<div style="padding:10px 20px;">
+			<center>
+			<h1 id="gameover_title"></h1>
+			<div id="gameover_highscore"></div>
+			<a href="#" id="gameover_ok" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">.</a>
+		</div>
+	</div>
+	<div data-role="popup" id="greetings" class="ui-corner-all" data-transition="none" data-dismissible="false">
+		<div style="padding:10px 20px;">
+		<center>
+		<h1 id="greetings_title">.</h1>
+		<p id="greetings_text">.</p>
+		<a id="greetings_gotit" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">.</a>
+		</div>
+	</div>
+</div>
+</div>
+<script>window.onresize();</script>
+</body>
+</html>
