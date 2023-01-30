@@ -1,13 +1,13 @@
 // JavaScript Document
-var audio_over = new Audio('/audio/over.wav');
-var audio_choose = new Audio('/audio/choose.wav');
-var audio_disappear = new Audio('/audio/disappear.wav');
-var audio_move = new Audio('/audio/move.wav');
-var audio_no_move = new Audio('/audio/no_move.wav');
-var audio_switch = new Audio('/audio/switch.wav');
-var audio_notification = new Audio('/audio/notification.wav');
+var audio_over = new Audio('./audio/over.wav');
+var audio_choose = new Audio('./audio/choose.wav');
+var audio_disappear = new Audio('./audio/disappear.wav');
+var audio_move = new Audio('./audio/move.wav');
+var audio_no_move = new Audio('./audio/no_move.wav');
+var audio_switch = new Audio('./audio/switch.wav');
+var audio_notification = new Audio('./audio/notification.wav');
 
-var music_background= new Audio('/music/music.mp3');
+var music_background= new Audio('./music/music.mp3');
 
 var audioEnabled= false;
 function enableAudio()

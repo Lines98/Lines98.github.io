@@ -5,30 +5,30 @@ function Score() {
 	this.last_score= 0;
 	this.score_image_loaded= 0;
 	this.score_image= null;
-	
+
 	//Number
 	this.number_length= 5;
 	this.number_width= 18;
 	this.number_height= 35;
 	this.number_spacing= 4;
-	
+
 	//Offset
 	this.offset_x1= 28;
 	this.offset_x2= 280;
 	this.offset_y= 9;
-	
+
 	this.init= function () {
 		this.score_image= new Image();
-		this.score_image.src= '/images/score.png';		
+		this.score_image.src= './images/score.png';
 		this.score_image.onload= this.imageloaded();
-    
+
 		var cookie= document.cookie;
 		if (typeof(cookie)!= "undefined") {
 			GS= cookie.split('GS=');
 			if (GS.length>= 2) {
 				this.score= Math.floor(GS[1].split(';')[0]);
 			}
-			
+
 			GHS= cookie.split('GHS=');
 			if (GHS.length>= 2) {
 				this.high_score= Math.floor(GHS[1].split(';')[0]);
@@ -42,7 +42,7 @@ function Score() {
 		this.score_image_loaded= 1;
 		console.log('score image loaded!');
 	}
-	
+
 	this.show_score= function (ctx, score, x, y) {
 		var number_str= score.toString();
 		for (var i= number_str.length; i< this.number_length; i++) {
@@ -52,20 +52,20 @@ function Score() {
 		for (var i=0; i< number_str.length; i++) {
 			var sub_number= Math.floor(number_str[i]);
 			ctx.drawImage(
-				this.score_image, 
-				sub_number* this.number_width, 
-				0, 
-				this.number_width, 
-				this.number_height, 
+				this.score_image,
+				sub_number* this.number_width,
+				0,
+				this.number_width,
+				this.number_height,
 				x+ i* (this.number_width+ this.number_spacing),
-				y, 
+				y,
 				this.number_width,
 				this.number_height
 			);
 		}
 	}
 
-	this.draw= function (ctx) {		
+	this.draw= function (ctx) {
 		if (this.score_image_loaded== 1) {
 			this.show_score(ctx, this.high_score, this.offset_x1, this.offset_y);
 			if (this.score== 0) {
@@ -105,6 +105,6 @@ function Score() {
 			} else {
 				console.log("Cookie High Score Not Found!");
 			}
-		}		
+		}
 	}
 }

@@ -180,7 +180,7 @@ function GameDraw() {
 }
 
 function GameInit() {
-	layout_image.src= '/images/layout.png';
+	layout_image.src= './images/layout.png';
 	layout_image.onload= function () {
 		console.log('layout image loaded');
 		layout_image_loaded= 1;
