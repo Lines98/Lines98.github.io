@@ -1,0 +1,93 @@
+/* Color Option */
+body 
+{
+	color: #555555;
+	background: #e3e3e3; /* c5c5c5 */
+}
+
+a
+{
+	color: #444444;
+}
+
+a:hover
+{
+	color: #1b2630;	
+}
+
+.header
+{
+	background: #1b2630;
+	color: #ffffff;
+	-webkit-box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+	-moz-box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+	box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+}
+
+.container
+{
+	background: #e3e3e3;
+}
+
+.content
+{
+	background: #e3e3e3;
+}
+
+.sidebar
+{
+	background: #e3e3e3;
+}
+
+.navigation
+{
+	background: #e3e3e3;
+}
+
+.footer
+{
+	border-top: 1px solid #1b2630;
+	background: #e3e3e3;
+}
+
+.thumbs
+{
+	border-bottom: 1px solid #e1e1e1;
+	background: #f1f1f1;
+}
+
+.ad
+{
+	background: #fafafa;
+	color: #77779e;
+}
+
+.adtextlight
+{
+	color: #ffffff;	
+	text-shadow: 1px 1px #000000;
+}
+
+.adtextdark
+{
+	color: #000000;
+	text-shadow: 1px 1px #ffffff;
+}
+
+.head
+{
+	color: #555555;
+	background: #f1f1f1;	
+	border-bottom: 1px solid #e1e1e1;
+}
+
+.box
+{
+	background: #fafafa;
+	color: #77779e;
+}
+
+.input
+{
+	border: 1px solid #e1e1e1;
+}

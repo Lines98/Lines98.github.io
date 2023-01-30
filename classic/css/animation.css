@@ -1,0 +1,91 @@
+/* CSS Document */
+.swing 
+{
+	-webkit-transform-origin: top center;
+	transform-origin: top center;
+	-webkit-animation-name: swing;
+	animation-name: swing;	
+	animation-iteration-count: infinite;
+}
+
+.delay1s
+{
+	-webkit-animation-delay: 1s;
+	animation-delay: 1s;
+}
+
+.delay2s
+{
+	-webkit-animation-delay: 2s;
+	animation-delay: 2s;
+}
+
+.delay3s
+{
+	-webkit-animation-delay: 3s;
+	animation-delay: 3s;
+}
+
+.delay4s
+{
+	-webkit-animation-delay: 4s;
+	animation-delay: 4s;
+}
+
+.delay5s
+{
+	-webkit-animation-delay: 5s;
+	animation-delay: 5s;
+}
+
+.duration1
+{
+	animation-duration: 1s;
+}
+
+.duration2
+{
+	animation-duration: 2s;
+}
+
+.duration3
+{
+	animation-duration: 3s;
+}
+
+.duration4
+{
+	animation-duration: 4s;
+}
+
+.duration5
+{
+	animation-duration: 5s;
+}
+
+@keyframes swing 
+{
+  25% 
+  {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+  
+  50% 
+  {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+  
+  75% 
+  {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  to 
+  {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}

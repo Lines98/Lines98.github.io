@@ -1,0 +1,117 @@
+/* Media Screen Responsive */
+
+/* Mobile */
+@media (min-width: 310px)
+{
+	.test
+	{
+		background: #ff0000;
+	}
+	
+	.header
+	{
+		width: 100%;
+		position:fixed;
+	}
+	
+	.content
+	{
+		margin: 0px;
+		padding-top: 6px;
+		width: 100%;
+	}
+	
+	.sidebar
+	{
+		margin: 0px;
+		padding-top: 6px;
+		width: 100%;
+	}
+	
+	.navigation
+	{
+		margin: 0px;
+		padding-top: 6px;
+		padding-bottom: 6px;
+		width: 100%;
+	}
+}
+
+/* Tablet Landscape */
+@media (min-width: 760px) and (min-aspect-ratio:4/3)
+{
+	.test
+	{
+		background: #00ff00;
+	}
+	
+	.content
+	{
+		width: calc(100% - 335px);
+		margin: 0px;		
+		padding-top: 6px;
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-bottom: 5px;
+		float:left;
+	}
+
+	.sidebar
+	{
+		width: 320px;
+		margin: 0px;
+		padding-top: 6px;
+		padding-right: 5px;
+		float: left;
+	}
+	
+	.navigation
+	{
+		width: 320px;
+		margin: 0px;
+		padding-top: 6px;
+		padding-right: 5px;
+		padding-bottom: 5px;
+		float: right;
+	}
+}
+
+/* Desktop Wide Landscape */
+@media (min-width: 1200px) and (min-aspect-ratio:16/9)
+{
+	.test
+	{
+		background: #0000ff;
+	}
+	
+	.content
+	{
+		width: calc(100% - 660px);
+		margin: 0px;		
+		padding-top: 6px;
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-bottom: 5px;
+		float:left;
+	}
+
+	.sidebar
+	{
+		width: 320px;
+		margin: 0px;
+		padding-top: 6px;
+		padding-right: 5px;
+		padding-bottom: 5px;
+		float: left;
+	}
+	
+	.navigation
+	{
+		width: 320px;
+		margin: 0px;
+		padding-top: 6px;
+		padding-right: 5px;
+		padding-bottom: 5px;
+		float: right;
+	}
+}
