@@ -1,0 +1,70 @@
+#game {
+	z-index: 10;
+	position: relative;
+	touch-action: none; /* Direct all pointer events to JavaScript code. */
+}
+
+#adBanner {
+	position: fixed;
+	z-index: 10;
+	display: none;
+	bottom: 0;
+}
+
+#adFullScreen {
+	z-index: 12;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+}
+
+#adFullScreen img{
+	position: absolute;
+	z-index: 13;
+	top: 1%;
+	left: 1%;
+	height: 35px;
+	width: 35px;
+	padding: 5px;
+}
+
+/*@media all and (orientation:portrait) {
+	#wrongRotation {
+		display: none;
+	}
+}*/
+
+#wrongRotation {
+	display: none;
+	z-index: 15;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 1);
+}
+
+#wrongRotation img {
+	display: block;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 40%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+#menu {
+	position: fixed;
+}
+
+@font-face {
+	font-family: 'gadugi';
+	font-style: normal;
+	font-weight: 400;
+	src: local('gadugi'), url('../assets/fnt/gadugi.ttf') format('truetype');
+}
